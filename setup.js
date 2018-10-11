@@ -42,7 +42,7 @@ const commands = [
   `yarn add --dev ${deps} --ignore-workspace-root-check`,
   'git init',
   'git add .',
-  'git commit -am "first commit"'
+  'git commit -am "first commit from starter-monorepo"'
 ]
 commands.forEach(command => {
   console.log(`----- Executing Command -----> ${command}`)
