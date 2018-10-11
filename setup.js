@@ -7,7 +7,7 @@ const fs = require('fs')
 const sync = require('child_process').execSync
 
 /**
- * Last portion of working directory...
+ * Last portion of working directory....
  */
 const cwd = path.join(__dirname)
 const name = cwd.split(path.sep).pop()
