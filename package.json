@@ -1,0 +1,30 @@
+{
+  "name": "starter-monorepo",
+  "version": "0.1.0",
+  "private": true,
+  "license": "MIT",
+  "scripts": {
+    "precommit": "lint-staged",
+    "presetup": "git clean -fX",
+    "setup": "yarn"
+  },
+  "devDependencies": {
+    "husky": "1.1.2",
+    "lint-staged": "7.3.0",
+    "prettier": "1.14.3",
+    "sort-package-json": "1.15.0"
+  },
+  "lint-staged": {
+    "*.{js,ts,json,css}": [
+      "prettier --write",
+      "git add"
+    ],
+    "*package.json": [
+      "sort-package-json",
+      "git add"
+    ]
+  },
+  "workspaces": [
+    "applications/*"
+  ]
+}
