@@ -17,14 +17,12 @@ const fromRoot = file => path.join(cwd, file)
 /**
  * Write a README.md file
  */
-
 fs.writeFileSync(fromRoot('README.md'), `#${name}\n\n`, 'utf-8')
 
 /**
  * ReWrite a package.json file
  * Change package name and remove devDependencies while re-writing
  */
-
 const pkg = require('./package.json')
 pkg.name = name
 const deps = Object.keys(pkg.devDependencies).join(' ')
@@ -34,8 +32,8 @@ fs.writeFileSync(fromRoot('package.json'), JSON.stringify(pkg, null, '  ') + '\n
 /**
  * Remove Files and Self destruct
  */
-const files = [fromRoot('applications/.gitkeep'), fromRoot('setup.js')]
-files.forEach(file => fs.unlinkSync(file))
+const files = ['applications/.gitkeep', '.travis.yml', 'setup.js']
+files.forEach(file => fs.unlinkSync(fromRoot(file)))
 
 /**
  * Add latest devDependencies and initialize git repo
