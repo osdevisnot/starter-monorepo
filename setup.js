@@ -30,10 +30,9 @@ delete pkg.devDependencies
 fs.writeFileSync(fromRoot('package.json'), JSON.stringify(pkg, null, '  ') + '\n', 'utf-8')
 
 /**
- * Remove Files and Self destruct
+ * Self Destruct
  */
-const files = ['applications/.gitkeep', '.travis.yml', 'setup.js']
-files.forEach(file => fs.unlinkSync(fromRoot(file)))
+fs.unlinkSync(fromRoot('setup.js'))
 
 /**
  * Add latest devDependencies and initialize git repo
