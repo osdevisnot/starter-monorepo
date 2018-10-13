@@ -20,14 +20,13 @@ const fromRoot = file => path.join(cwd, file)
 fs.writeFileSync(fromRoot('README.md'), `#${name}\n\n`, 'utf-8')
 
 /**
- * ReWrite a package.json file
- * Change package name and remove devDependencies while re-writing
+ * Rewrite files replacing starter name
  */
-const pkg = require('./package.json')
-pkg.name = name
-const deps = Object.keys(pkg.devDependencies).join(' ')
-delete pkg.devDependencies
-fs.writeFileSync(fromRoot('package.json'), JSON.stringify(pkg, null, '  ') + '\n', 'utf-8')
+const rewriteFiles = ['package.json']
+rewriteFiles.forEach(file => {
+  const content = fs.readFileSync(fromRoot(file), 'utf-8')
+  fs.writeFileSync(fromRoot(file), content.replace(/starter-react/g, name), 'utf-8')
+})
 
 /**
  * Remove Files and Self destruct
@@ -38,12 +37,7 @@ files.forEach(file => fs.unlinkSync(fromRoot(file)))
 /**
  * Add latest devDependencies and initialize git repo
  */
-const commands = [
-  `yarn add --dev ${deps} --ignore-workspace-root-check`,
-  'git init',
-  'git add .',
-  'git commit -am "first commit from starter-monorepo"'
-]
+const commands = ['yarn', 'git init', 'git add .', 'git commit -am "first commit from starter-monorepo"']
 commands.forEach(command => {
   console.log(`----- Executing Command -----> ${command}`)
   sync(command, { stdio: [0, 1, 2] })
