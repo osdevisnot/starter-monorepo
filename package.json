@@ -5,11 +5,13 @@
   "license": "MIT",
   "scripts": {
     "precommit": "lint-staged",
-    "presetup": "git clean -fX",
-    "setup": "yarn"
+    "presetup": "git clean -fdX",
+    "setup": "npm install",
+    "postsetup": "lerna bootstrap"
   },
   "devDependencies": {
     "husky": "1.1.2",
+    "lerna": "3.4.3",
     "lint-staged": "7.3.0",
     "prettier": "1.14.3",
     "sort-package-json": "1.16.0"
@@ -23,8 +25,5 @@
       "sort-package-json",
       "git add"
     ]
-  },
-  "workspaces": [
-    "modules/*"
-  ]
+  }
 }
