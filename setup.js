@@ -37,7 +37,7 @@ files.forEach(file => fs.unlinkSync(fromRoot(file)))
 /**
  * Add latest devDependencies and initialize git repo
  */
-const commands = ['npm install', 'git init', 'git add .', 'git commit -am "first commit from starter-monorepo"']
+const commands = ['git init', 'git add .', 'git commit -am "first commit from starter-monorepo"', 'npm install']
 commands.forEach(command => {
   console.log(`----- Executing Command -----> ${command}`)
   sync(command, { stdio: [0, 1, 2] })
