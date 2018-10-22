@@ -25,7 +25,7 @@ fs.writeFileSync(fromRoot('README.md'), `#${name}\n\n`, 'utf-8')
 const rewriteFiles = ['package.json']
 rewriteFiles.forEach(file => {
   const content = fs.readFileSync(fromRoot(file), 'utf-8')
-  fs.writeFileSync(fromRoot(file), content.replace(/starter-react/g, name), 'utf-8')
+  fs.writeFileSync(fromRoot(file), content.replace(/starter-monorepo/g, name), 'utf-8')
 })
 
 /**
